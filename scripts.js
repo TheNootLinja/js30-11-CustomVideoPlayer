@@ -7,7 +7,7 @@ const skipButtons = playerParent.querySelectorAll('[data-skip]');
 const rangeInputs = playerParent.querySelectorAll('.player__slider');
 
 videoPlayer.onloadedmetadata = () => {
-  console.log(videoPlayer.duration)
+  console.log(videoPlayer.currentTime/videoPlayer.duration)
 }
 
 const handlePlayButtonClick = () => {
@@ -19,11 +19,8 @@ const handlePlayButtonClick = () => {
 }
 
 const updateButtonText = () => {
-  if(videoPlayer.paused) {
-    playButton.innerHTML = '►'
-  } else {
-    playButton.innerHTML = '||'
-  }
+  const buttonIcon = videoPlayer.paused ? '►' : '❚ ❚';
+  playButton.textContent = buttonIcon;
 }
 
 videoPlayer.addEventListener('click', handlePlayButtonClick);
